@@ -8,35 +8,44 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* LazyTopper cockpit – calm light, serif display, soft green accent */
+    --background: 150 30% 98%;
+    --foreground: 200 25% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 200 25% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 200 25% 12%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 158 45% 32%;
+    --primary-foreground: 150 40% 98%;
+    --primary-soft: 152 48% 92%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 150 25% 95%;
+    --secondary-foreground: 200 25% 18%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 150 20% 95%;
+    --muted-foreground: 200 12% 42%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 152 55% 88%;
+    --accent-foreground: 158 45% 22%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 4 70% 52%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --warn: 32 85% 50%;
+    --warn-foreground: 32 80% 18%;
 
-    --radius: 0.5rem;
+    --border: 150 16% 88%;
+    --input: 150 16% 88%;
+    --ring: 158 45% 32%;
+
+    --radius: 0.85rem;
+
+    --shadow-soft: 0 1px 2px hsl(200 20% 20% / 0.04), 0 8px 24px -12px hsl(200 30% 25% / 0.08);
+    --shadow-card: 0 1px 0 hsl(150 16% 92%), 0 12px 32px -16px hsl(200 30% 25% / 0.12);
+    --gradient-cockpit: linear-gradient(180deg, hsl(150 35% 98%), hsl(150 25% 95%));
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +110,38 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+    background-image: var(--gradient-cockpit);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: "Fraunces", "Iowan Old Style", Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  .lt-card {
+    @apply bg-card rounded-2xl border border-border;
+    box-shadow: var(--shadow-card);
+  }
+  .lt-soft {
+    background: hsl(var(--primary-soft));
+    color: hsl(var(--primary));
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-border bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground;
+  }
+  .shimmer {
+    background: linear-gradient(90deg, hsl(150 20% 94%) 0%, hsl(150 25% 98%) 50%, hsl(150 20% 94%) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s ease-in-out infinite;
+  }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
   }
 }
