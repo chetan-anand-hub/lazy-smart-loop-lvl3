@@ -78,16 +78,24 @@ export default function AppHome() {
               <TrendingUp className="h-4 w-4 text-[hsl(var(--accent-emerald))]" />
               <div className="font-display text-base">Today’s loop</div>
             </div>
-            <div className="rounded-lg lt-soft px-3 py-2 text-sm">
-              <div className="font-medium">Trigonometry · 7/10</div>
-              <div className="text-[12px] opacity-80">Main issue: sign error in identity proof.</div>
-            </div>
-            <div className="text-[11px] text-muted-foreground mt-2">Suggested next, optional:</div>
-            <div className="flex flex-wrap gap-1.5 mt-1.5">
-              <Link to="/app/practice/run?mode=quick&topic=trigonometry" className="chip-emerald">Targeted drill</Link>
-              <Link to="/app/worksheets" className="chip">Mistake-aware worksheet</Link>
-              <Link to="/app/practice" className="chip">Add weak-area to mock</Link>
-            </div>
+            {signedIn ? (
+              <>
+                <div className="rounded-lg lt-soft px-3 py-2 text-sm">
+                  <div className="font-medium">Trigonometry · 7/10</div>
+                  <div className="text-[12px] opacity-80">Main issue: sign error in identity proof.</div>
+                </div>
+                <div className="text-[11px] text-muted-foreground mt-2">Prototype sample based on saved checked answers. Optional next:</div>
+                <div className="flex flex-wrap gap-1.5 mt-1.5">
+                  <Link to="/app/practice/run?mode=quick&topic=trigonometry" className="chip-emerald">Targeted drill</Link>
+                  <Link to="/app/worksheets" className="chip">Mistake-aware worksheet</Link>
+                  <Link to="/app/practice" className="chip">Add weak-area to mock</Link>
+                </div>
+              </>
+            ) : (
+              <p className="text-[12px] text-muted-foreground">
+                Sign in to start your 7-day trial and save checked answers so LazyTopper can show today’s loop here.
+              </p>
+            )}
           </div>
 
           <div className="lt-card p-4">
@@ -97,11 +105,14 @@ export default function AppHome() {
             </div>
             {signedIn ? (
               <ul className="text-sm space-y-1.5">
+                <li className="text-[11px] text-muted-foreground">Prototype sample based on saved checked answers.</li>
                 <li className="flex justify-between"><span className="text-muted-foreground">Top mistake</span><span className="font-medium">Conceptual setup</span></li>
                 <li className="flex justify-between"><span className="text-muted-foreground">Weakest sub-topic</span><span className="font-medium">Identity proofs</span></li>
               </ul>
             ) : (
-              <p className="text-[12px] text-muted-foreground">Sign in on the trial to see your saved mistakes and progress here.</p>
+              <p className="text-[12px] text-muted-foreground">
+                Sign in to start your 7-day trial and save checked answers so LazyTopper can show Mistake Intelligence.
+              </p>
             )}
           </div>
 

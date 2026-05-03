@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { AppShell, ContextBar, ScopeBuilder } from "@/components/AppShell";
+import { AppShell, ContextBar, ScopeBuilder, BackToParent } from "@/components/AppShell";
+import { useSession } from "@/lib/session";
 import { Pencil, FileText, Sparkles, Timer, ClipboardList, Layers, ArrowRight, BookOpen, AlertTriangle, TrendingUp } from "lucide-react";
 
 const actions = [
@@ -18,8 +19,10 @@ const more = [
 const hpqTabs = ["Topic HPQs", "Selected topics", "Full subject"] as const;
 
 export default function PracticeHub() {
+  const { signedIn } = useSession();
   return (
     <AppShell>
+      <BackToParent to="/app" label="Back to cockpit" />
       <div className="grid lg:grid-cols-[1fr_300px] gap-6">
         <div>
           <div className="text-xs text-muted-foreground mb-1">Practice</div>
@@ -130,13 +133,21 @@ export default function PracticeHub() {
               <AlertTriangle className="h-4 w-4 text-[hsl(var(--warn))]" />
               <div className="font-display text-base">Mistake Intelligence</div>
             </div>
-            <p className="text-[12px] text-muted-foreground mb-3">Powered by your saved checked answers.</p>
-            <ul className="text-sm space-y-1.5">
-              <li className="flex justify-between"><span className="text-muted-foreground">Top mistake</span><span className="font-medium">Conceptual setup</span></li>
-              <li className="flex justify-between"><span className="text-muted-foreground">Weakest sub-topic</span><span className="font-medium">Identity proofs</span></li>
-              <li className="flex justify-between"><span className="text-muted-foreground">Marks at risk</span><span className="font-medium">~6/80</span></li>
-            </ul>
-            <Link to="/app/me" className="text-[12px] text-[hsl(var(--accent-emerald))] hover:underline mt-3 inline-block">See full Me / Progress →</Link>
+            {signedIn ? (
+              <>
+                <p className="text-[11px] text-muted-foreground mb-2">Prototype sample based on saved checked answers.</p>
+                <ul className="text-sm space-y-1.5">
+                  <li className="flex justify-between"><span className="text-muted-foreground">Top mistake</span><span className="font-medium">Conceptual setup</span></li>
+                  <li className="flex justify-between"><span className="text-muted-foreground">Weakest sub-topic</span><span className="font-medium">Identity proofs</span></li>
+                  <li className="flex justify-between"><span className="text-muted-foreground">Marks at risk</span><span className="font-medium">~6/80</span></li>
+                </ul>
+                <Link to="/app/me" className="text-[12px] text-[hsl(var(--accent-emerald))] hover:underline mt-3 inline-block">See full Me / Progress →</Link>
+              </>
+            ) : (
+              <p className="text-[12px] text-muted-foreground">
+                Sign in to start your 7-day trial and save checked answers so LazyTopper can show Mistake Intelligence.
+              </p>
+            )}
           </div>
 
           <div className="lt-card p-4">
@@ -148,10 +159,12 @@ export default function PracticeHub() {
             </div>
           </div>
 
-          <div className="lt-card p-4">
-            <div className="flex items-center gap-2 mb-1"><TrendingUp className="h-4 w-4 text-[hsl(var(--accent-emerald))]" /><div className="font-display text-base">Today’s loop</div></div>
-            <p className="text-[12px] text-muted-foreground">Trigonometry · 7/10. Main issue: sign error in identity proof.</p>
-          </div>
+          {signedIn && (
+            <div className="lt-card p-4">
+              <div className="flex items-center gap-2 mb-1"><TrendingUp className="h-4 w-4 text-[hsl(var(--accent-emerald))]" /><div className="font-display text-base">Today’s loop</div></div>
+              <p className="text-[12px] text-muted-foreground">Prototype sample · Trigonometry · 7/10. Main issue: sign error in identity proof.</p>
+            </div>
+          )}
         </aside>
       </div>
     </AppShell>

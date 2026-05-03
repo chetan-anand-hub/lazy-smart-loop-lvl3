@@ -106,12 +106,20 @@ export default function WorksheetHub() {
               <AlertTriangle className="h-4 w-4 text-[hsl(var(--warn))]" />
               <div className="font-display text-base">Mistake Intelligence</div>
             </div>
-            <ul className="text-sm space-y-1.5">
-              <li className="flex justify-between"><span className="text-muted-foreground">Top mistake</span><span className="font-medium">Conceptual setup</span></li>
-              <li className="flex justify-between"><span className="text-muted-foreground">Weakest sub-topic</span><span className="font-medium">Identity proofs</span></li>
-              <li className="flex justify-between"><span className="text-muted-foreground">Suggested adds</span><span className="font-medium">3 questions</span></li>
-            </ul>
-            <p className="text-[11px] text-muted-foreground mt-2">Profile data — visible only when signed in on the trial.</p>
+            {signedIn ? (
+              <>
+                <p className="text-[11px] text-muted-foreground mb-2">Prototype sample based on saved checked answers.</p>
+                <ul className="text-sm space-y-1.5">
+                  <li className="flex justify-between"><span className="text-muted-foreground">Top mistake</span><span className="font-medium">Conceptual setup</span></li>
+                  <li className="flex justify-between"><span className="text-muted-foreground">Weakest sub-topic</span><span className="font-medium">Identity proofs</span></li>
+                  <li className="flex justify-between"><span className="text-muted-foreground">Suggested adds</span><span className="font-medium">3 questions</span></li>
+                </ul>
+              </>
+            ) : (
+              <p className="text-[12px] text-muted-foreground">
+                Sign in to start your 7-day trial and save checked answers so LazyTopper can show Mistake Intelligence.
+              </p>
+            )}
           </div>
           <div className="lt-card p-4">
             <div className="font-display text-base mb-1">What gets saved?</div>
