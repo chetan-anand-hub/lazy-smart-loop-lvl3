@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { AppShell } from "@/components/AppShell";
+import { AppShell, BackToParent } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/lib/session";
 import { FileText, CheckCircle2, AlertTriangle, Sparkles } from "lucide-react";
@@ -35,6 +35,7 @@ export default function MePage() {
 
   return (
     <AppShell>
+      <BackToParent to="/app" label="Back to Dashboard" />
       <div className="flex items-end justify-between mb-4 flex-wrap gap-3">
         <div>
           <h1 className="font-display text-2xl">Me / Progress</h1>

@@ -1,5 +1,5 @@
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { AppShell } from "@/components/AppShell";
+import { AppShell, BackToParent } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/lib/session";
 import { GraduationCap, ShieldCheck, Sparkles } from "lucide-react";
@@ -35,6 +35,7 @@ export default function LoginPage() {
 
   return (
     <AppShell>
+      <BackToParent to="/app" label="Back to Dashboard" />
       <div className="grid lg:grid-cols-2 gap-5 items-stretch">
         <div className="lt-card p-6">
           <div className="flex items-center gap-2 mb-3"><span className="chip text-primary border-primary/20 bg-[hsl(var(--primary-soft))]"><Sparkles className="h-3 w-3" /> 7-day free trial</span></div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { AppShell } from "@/components/AppShell";
+import { AppShell, BackToParent, ContextBar } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { SolutionCard } from "@/components/SolutionCard";
@@ -27,10 +27,10 @@ export default function WorksheetAttempt() {
 
   return (
     <AppShell>
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <h1 className="font-display text-xl">Worksheet attempt — Trigonometry</h1>
-        <Button asChild variant="ghost" size="sm"><Link to="/app/worksheets/ready">Back to worksheet</Link></Button>
-      </div>
+      <BackToParent to="/app/worksheets/ready" label="Back to worksheet" />
+      <h1 className="font-display text-[24px]">Worksheet attempt · Trigonometry</h1>
+      <p className="text-sm text-muted-foreground mt-1 mb-4">Attempt → Check → See mistakes → Practise similar.</p>
+      <ContextBar scope="Worksheet attempt" marks={`Q${active} of ${questions.length}`} />
 
       <div className="grid lg:grid-cols-[240px_1fr_280px] gap-4">
         <div className="lt-card p-2 h-fit">

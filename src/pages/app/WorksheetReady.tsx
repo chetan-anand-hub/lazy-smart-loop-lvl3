@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { AppShell } from "@/components/AppShell";
+import { AppShell, BackToParent, ContextBar } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/lib/session";
 import { CheckCircle2, Download, Pencil, Sparkles, FileCheck2 } from "lucide-react";
@@ -8,9 +8,11 @@ export default function WorksheetReady() {
   const { signedIn } = useSession();
   return (
     <AppShell>
+      <BackToParent to="/app/worksheets" label="Back to Worksheet" />
+      <ContextBar scope="Worksheet · Sections A–E" marks="20 questions · ~50 min" />
       <div className="lt-card p-5 mb-4 flex flex-wrap gap-4 items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-md border border-border bg-secondary grid place-items-center text-[hsl(var(--success))]"><CheckCircle2 className="h-5 w-5" /></div>
+          <div className="h-10 w-10 rounded-xl lt-success grid place-items-center"><CheckCircle2 className="h-5 w-5" /></div>
           <div>
             <h1 className="font-display text-xl">Worksheet ready</h1>
             <p className="text-xs text-muted-foreground">20 questions • Trigonometry • Sections A–E • All levels</p>
