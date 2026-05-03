@@ -27,37 +27,37 @@ export default function AppHome() {
   const { signedIn } = useSession();
   return (
     <AppShell>
-      <section className="lt-card p-7 mb-6 relative overflow-hidden">
-        <div className="absolute -right-10 -top-10 h-48 w-48 rounded-full lt-soft opacity-60" />
+      <section className="lt-card p-6 mb-5 relative overflow-hidden">
+        <div className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-[hsl(var(--primary-soft))] opacity-50" />
         <div className="relative">
-          <span className="chip lt-soft border-transparent"><Sparkles className="h-3 w-3" /> Calm cockpit</span>
-          <h1 className="font-display text-3xl md:text-4xl mt-3 mb-2">Welcome back to LazyTopper.</h1>
-          <p className="text-muted-foreground max-w-xl">
+          <span className="chip"><Sparkles className="h-3 w-3 text-primary" /> Cockpit</span>
+          <h1 className="font-display text-2xl md:text-3xl mt-2 mb-1.5">Welcome back to LazyTopper.</h1>
+          <p className="text-sm text-muted-foreground max-w-xl">
             Practise a question, build a worksheet, or check an answer. {signedIn ? "Your trial is active — attempts and mistakes save to your profile." : "Start your 7-day trial to save attempts, worksheets and mistakes."}
           </p>
         </div>
       </section>
 
-      <div className="grid sm:grid-cols-2 gap-4">
+      <div className="grid sm:grid-cols-2 gap-3">
         {tiles.map((t) => (
-          <Link key={t.to} to={t.to} className="lt-card p-5 hover:border-primary/40 transition-colors group">
-            <div className="flex items-start gap-4">
-              <div className="h-10 w-10 rounded-xl lt-soft grid place-items-center"><t.icon className="h-5 w-5" /></div>
+          <Link key={t.to} to={t.to} className="lt-card p-4 hover:border-primary/40 transition-colors group">
+            <div className="flex items-start gap-3">
+              <div className="h-9 w-9 rounded-md border border-border bg-secondary grid place-items-center text-primary"><t.icon className="h-4 w-4" /></div>
               <div className="flex-1">
                 <div className="flex items-center justify-between">
-                  <div className="font-display text-lg">{t.title}</div>
+                  <div className="font-display text-base">{t.title}</div>
                   <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
                 </div>
-                <p className="text-sm text-muted-foreground mt-1">{t.desc}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{t.desc}</p>
               </div>
             </div>
           </Link>
         ))}
       </div>
 
-      <div className="lt-card p-5 mt-6">
-        <div className="text-sm font-medium mb-3">All prototype routes</div>
-        <div className="grid sm:grid-cols-2 gap-2 text-sm">
+      <div className="lt-card p-4 mt-5">
+        <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">All prototype routes</div>
+        <div className="grid sm:grid-cols-2 gap-1.5 text-sm">
           {allRoutes.map(([to, label]) => (
             <Link key={to} to={to} className="text-primary hover:underline">{label}</Link>
           ))}

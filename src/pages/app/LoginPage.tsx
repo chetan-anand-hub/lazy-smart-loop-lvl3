@@ -35,29 +35,29 @@ export default function LoginPage() {
 
   return (
     <AppShell>
-      <div className="grid lg:grid-cols-2 gap-6 items-stretch">
-        <div className="lt-card p-8">
-          <div className="flex items-center gap-2 mb-3"><span className="chip lt-soft border-transparent"><Sparkles className="h-3 w-3" /> 7-day free trial</span></div>
-          <h1 className="font-display text-3xl mb-2">{cfg.title}</h1>
-          <p className="text-muted-foreground mb-6">{cfg.desc}</p>
-          <ul className="text-sm space-y-2 text-muted-foreground mb-6">
+      <div className="grid lg:grid-cols-2 gap-5 items-stretch">
+        <div className="lt-card p-6">
+          <div className="flex items-center gap-2 mb-3"><span className="chip text-primary border-primary/20 bg-[hsl(var(--primary-soft))]"><Sparkles className="h-3 w-3" /> 7-day free trial</span></div>
+          <h1 className="font-display text-2xl mb-2">{cfg.title}</h1>
+          <p className="text-sm text-muted-foreground mb-5">{cfg.desc}</p>
+          <ul className="text-sm space-y-2 text-muted-foreground mb-5">
             <li className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-primary" /> No card needed for trial.</li>
             <li className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-primary" /> Examiner-style feedback only — no official CBSE link.</li>
             <li className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-primary" /> Your work stays in your profile.</li>
           </ul>
-          <Button size="lg" className="w-full" onClick={onSignIn}>
+          <Button className="w-full" onClick={onSignIn}>
             <GoogleG /> Continue with Google
           </Button>
           {cfg.secondary && (
             <Button variant="ghost" className="w-full mt-2" asChild><Link to="/app">{cfg.secondary}</Link></Button>
           )}
-          <p className="text-xs text-muted-foreground mt-4">Prototype only. No real account is created.</p>
+          <p className="text-[11px] text-muted-foreground mt-3">Prototype only. No real account is created.</p>
         </div>
 
-        <div className="lt-card p-8 lt-soft border-transparent">
-          <div className="h-10 w-10 rounded-xl bg-card grid place-items-center mb-4"><GraduationCap className="h-5 w-5" /></div>
-          <div className="font-display text-2xl text-foreground mb-2">Why save?</div>
-          <ul className="space-y-3 text-sm text-foreground/80">
+        <div className="lt-card p-6 bg-[hsl(var(--primary-soft))] border-primary/15">
+          <div className="h-10 w-10 rounded-md border border-border bg-card grid place-items-center mb-3 text-primary"><GraduationCap className="h-5 w-5" /></div>
+          <div className="font-display text-xl text-foreground mb-2">Why save?</div>
+          <ul className="space-y-2.5 text-sm text-foreground/80">
             <li>• Mistake Intelligence learns from your checked answers, not guesses.</li>
             <li>• Me / Progress shows real saved evidence — attempts, checks, mistakes.</li>
             <li>• Worksheets can target the exact places you lost marks.</li>

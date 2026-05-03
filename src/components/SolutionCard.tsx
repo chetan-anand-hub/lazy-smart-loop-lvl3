@@ -2,9 +2,9 @@ import { Lightbulb, AlertTriangle, CheckCircle2 } from "lucide-react";
 
 export function SolutionCard({ generated = false }: { generated?: boolean }) {
   return (
-    <div className="lt-card p-5 space-y-4">
+    <div className="lt-card p-4 space-y-3">
       <div className="flex items-center gap-2">
-        <span className="chip lt-soft border-transparent">{generated ? "AI board-style solution" : "Board-style solution"}</span>
+        <span className="chip text-primary border-primary/20 bg-[hsl(var(--primary-soft))]">{generated ? "AI board-style solution" : "Board-style solution"}</span>
         <span className="chip">3 steps</span>
       </div>
       <ol className="space-y-3 text-sm">
@@ -21,15 +21,15 @@ export function SolutionCard({ generated = false }: { generated?: boolean }) {
           <div className="text-muted-foreground">1/4 + 3/4 = 1.</div>
         </li>
       </ol>
-      <div className="rounded-lg lt-soft px-4 py-3 text-sm font-medium flex items-center gap-2">
+      <div className="rounded-md lt-success px-3.5 py-2.5 text-sm font-medium flex items-center gap-2">
         <CheckCircle2 className="h-4 w-4" /> Final answer: 1
       </div>
       <div className="grid sm:grid-cols-2 gap-3 text-sm">
-        <div className="rounded-lg border border-border bg-secondary/60 p-3">
+        <div className="rounded-md border border-border bg-secondary/60 p-3">
           <div className="flex items-center gap-2 font-medium"><AlertTriangle className="h-4 w-4 text-[hsl(var(--warn))]" /> Common mistake</div>
           <p className="text-muted-foreground mt-1">Writing cos 30° as 1/2 (that is sin 30°). Mark loss is usually 1.</p>
         </div>
-        <div className="rounded-lg border border-border bg-secondary/60 p-3">
+        <div className="rounded-md border border-border bg-secondary/60 p-3">
           <div className="flex items-center gap-2 font-medium"><Lightbulb className="h-4 w-4 text-primary" /> Examiner tip</div>
           <p className="text-muted-foreground mt-1">State the identity used before substituting — markers reward the named step.</p>
         </div>
