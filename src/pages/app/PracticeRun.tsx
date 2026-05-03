@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { AppShell } from "@/components/AppShell";
+import { AppShell, BackToParent, ContextBar } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useSession } from "@/lib/session";
@@ -22,12 +22,12 @@ export default function PracticeRun() {
 
   return (
     <AppShell>
-      <div className="mb-4">
-        <h1 className="font-display text-2xl">Quick Practice: Trigonometry</h1>
-        <p className="text-sm text-muted-foreground mt-1 max-w-2xl">
-          Try one question at a time. Save future attempts to your profile for mistake-aware recommendations.
-        </p>
-      </div>
+      <BackToParent to="/app/practice" label="Back to Practice" />
+      <h1 className="font-display text-[26px] leading-tight">Quick Practice · Trigonometry</h1>
+      <p className="text-sm text-muted-foreground mt-1 mb-4 max-w-2xl">
+        One question at a time. Mark when attempted, then check or reveal a board-style solution.
+      </p>
+      <ContextBar scope="Quick practice" marks="5 questions · ~10 min" />
 
       <div className="grid lg:grid-cols-[1fr_300px] gap-5">
         <div className="lt-card p-5">

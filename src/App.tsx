@@ -7,8 +7,10 @@ import { SessionProvider } from "@/lib/session";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import AppHome from "./pages/app/AppHome";
+import PracticeHub from "./pages/app/PracticeHub";
+import WorksheetHub from "./pages/app/WorksheetHub";
+import TopicHub from "./pages/app/TopicHub";
 import PracticeRun from "./pages/app/PracticeRun";
-import WorksheetBuild from "./pages/app/WorksheetBuild";
 import WorksheetReady from "./pages/app/WorksheetReady";
 import WorksheetAttempt from "./pages/app/WorksheetAttempt";
 import CheckPage from "./pages/app/CheckPage";
@@ -28,10 +30,13 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Navigate to="/app" replace />} />
             <Route path="/app" element={<AppHome />} />
+            <Route path="/app/practice" element={<PracticeHub />} />
             <Route path="/app/practice/run" element={<PracticeRun />} />
-            <Route path="/app/worksheets/build" element={<WorksheetBuild />} />
+            <Route path="/app/worksheets" element={<WorksheetHub />} />
+            <Route path="/app/worksheets/build" element={<WorksheetHub />} />
             <Route path="/app/worksheets/ready" element={<WorksheetReady />} />
             <Route path="/app/worksheets/attempt" element={<WorksheetAttempt />} />
+            <Route path="/app/topic-hub" element={<TopicHub />} />
             <Route path="/app/check" element={<CheckPage />} />
             <Route path="/app/check/result" element={<CheckResult />} />
             <Route path="/app/me" element={<MePage />} />

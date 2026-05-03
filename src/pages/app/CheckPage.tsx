@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AppShell } from "@/components/AppShell";
+import { AppShell, BackToParent, ContextBar } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useSession } from "@/lib/session";
@@ -13,8 +13,10 @@ export default function CheckPage() {
 
   return (
     <AppShell>
-      <h1 className="font-display text-2xl mb-1">Check this answer</h1>
-      <p className="text-sm text-muted-foreground mb-4">Examiner-style feedback. Not an official board score.</p>
+      <BackToParent to="/app/worksheets/ready" label="Back to worksheet" />
+      <h1 className="font-display text-[26px]">Check this answer</h1>
+      <p className="text-sm text-muted-foreground mt-1 mb-4">Examiner-style feedback. Not an official board score.</p>
+      <ContextBar scope="Check & Improve" marks="3-mark question" />
 
       <div className="grid lg:grid-cols-[1fr_300px] gap-5">
         <div className="space-y-4">

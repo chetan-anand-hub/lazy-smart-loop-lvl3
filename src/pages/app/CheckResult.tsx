@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { AppShell } from "@/components/AppShell";
+import { AppShell, BackToParent } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/lib/session";
 import { CheckCircle2, AlertTriangle, MinusCircle } from "lucide-react";
@@ -14,6 +14,7 @@ export default function CheckResult() {
   const { signedIn } = useSession();
   return (
     <AppShell>
+      <BackToParent to="/app/check?source=worksheet&topic=trigonometry" label="Back to Check & Improve" />
       <div className="grid lg:grid-cols-[1fr_300px] gap-5">
         <div className="space-y-4">
           <div className="lt-card p-5">

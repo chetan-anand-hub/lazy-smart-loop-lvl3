@@ -8,63 +8,65 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* LazyTopper calm cockpit — cream background, navy text, soft blue accent */
-    --background: 40 30% 97%;
-    --foreground: 215 30% 18%;
+    /* LazyTopper locked cockpit — warm cream canvas, dark navy sidebar, emerald accent */
+    --background: 44 33% 96%;
+    --foreground: 215 35% 13%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 30% 18%;
+    --card-foreground: 215 35% 13%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 30% 18%;
+    --popover-foreground: 215 35% 13%;
 
-    --primary: 215 55% 38%;
-    --primary-foreground: 0 0% 100%;
-    --primary-soft: 213 60% 95%;
+    --primary: 215 50% 14%;            /* deep navy ink — used for hero buttons */
+    --primary-foreground: 44 33% 97%;
 
-    --secondary: 40 25% 95%;
-    --secondary-foreground: 215 30% 22%;
+    --accent-emerald: 152 55% 28%;     /* LazyTopper green */
+    --accent-emerald-soft: 150 45% 90%;
+    --primary-soft: 150 45% 90%;
 
-    --muted: 40 20% 94%;
-    --muted-foreground: 215 14% 45%;
+    --secondary: 44 25% 93%;
+    --secondary-foreground: 215 30% 18%;
 
-    --accent: 213 60% 94%;
-    --accent-foreground: 215 55% 30%;
+    --muted: 44 22% 92%;
+    --muted-foreground: 215 12% 42%;
 
-    --destructive: 4 70% 52%;
+    --accent: 150 45% 90%;
+    --accent-foreground: 152 55% 22%;
+
+    --destructive: 4 70% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --warn: 32 80% 48%;
+    --warn: 32 80% 45%;
     --warn-foreground: 32 80% 18%;
 
-    --success: 152 42% 38%;
-    --success-soft: 152 40% 93%;
+    --success: 152 55% 28%;
+    --success-soft: 150 45% 90%;
 
-    --border: 40 15% 89%;
-    --input: 40 15% 89%;
-    --ring: 215 55% 38%;
+    --border: 40 18% 87%;
+    --input: 40 18% 87%;
+    --ring: 152 55% 28%;
 
-    --radius: 0.6rem;
+    --radius: 0.85rem;
 
-    --shadow-soft: 0 1px 2px hsl(215 25% 25% / 0.04), 0 4px 14px -8px hsl(215 30% 25% / 0.08);
-    --shadow-card: 0 1px 0 hsl(40 15% 92%), 0 6px 20px -14px hsl(215 30% 25% / 0.10);
-    --gradient-cockpit: linear-gradient(180deg, hsl(40 35% 98%), hsl(40 25% 96%));
+    --shadow-soft: 0 1px 2px hsl(215 25% 12% / 0.04), 0 4px 14px -8px hsl(215 30% 12% / 0.08);
+    --shadow-card: 0 1px 0 hsl(40 18% 90%), 0 8px 24px -18px hsl(215 30% 12% / 0.12);
+    --gradient-cockpit: linear-gradient(180deg, hsl(44 36% 97%), hsl(44 28% 95%));
 
-    --sidebar-background: 0 0% 98%;
+    /* Dark navy sidebar */
+    --sidebar-background: 215 40% 10%;
+    --sidebar-foreground: 210 25% 88%;
+    --sidebar-muted: 215 20% 60%;
+    --sidebar-border: 215 30% 18%;
+    --sidebar-active: 215 35% 18%;
+    --sidebar-active-foreground: 0 0% 100%;
+    --sidebar-brand: 152 55% 38%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-primary: 152 55% 38%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 35% 18%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-ring: 152 55% 38%;
   }
 
   .dark {
@@ -127,22 +129,32 @@ All colors MUST be HSL.
 
 @layer components {
   .lt-card {
-    @apply bg-card rounded-xl border border-border;
+    @apply bg-card rounded-2xl border border-border;
     box-shadow: var(--shadow-card);
   }
   .lt-soft {
-    background: hsl(var(--primary-soft));
-    color: hsl(var(--primary));
+    background: hsl(var(--accent-emerald-soft));
+    color: hsl(var(--accent-emerald));
   }
   .lt-success {
     background: hsl(var(--success-soft));
     color: hsl(var(--success));
   }
   .chip {
-    @apply inline-flex items-center gap-1 rounded-md border border-border bg-secondary px-2 py-0.5 text-[11px] font-medium text-secondary-foreground;
+    @apply inline-flex items-center gap-1 rounded-full border border-border bg-secondary/80 px-2.5 py-0.5 text-[11px] font-medium text-secondary-foreground;
+  }
+  .chip-emerald {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-medium;
+    background: hsl(var(--accent-emerald-soft));
+    color: hsl(var(--accent-emerald));
+    border: 1px solid hsl(var(--accent-emerald) / 0.18);
+  }
+  .lt-brand-tile {
+    background: hsl(var(--sidebar-brand));
+    color: white;
   }
   .shimmer {
-    background: linear-gradient(90deg, hsl(40 20% 94%) 0%, hsl(40 25% 98%) 50%, hsl(40 20% 94%) 100%);
+    background: linear-gradient(90deg, hsl(44 22% 92%) 0%, hsl(44 28% 97%) 50%, hsl(44 22% 92%) 100%);
     background-size: 200% 100%;
     animation: shimmer 1.4s ease-in-out infinite;
   }
