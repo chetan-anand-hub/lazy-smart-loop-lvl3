@@ -4,7 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SessionProvider } from "@/lib/session";
-import Index from "./pages/Index.tsx";
+import Landing from "./pages/Landing";
 import NotFound from "./pages/NotFound.tsx";
 import AppHome from "./pages/app/AppHome";
 import PracticeHub from "./pages/app/PracticeHub";
@@ -28,7 +28,7 @@ const App = () => (
       <SessionProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Navigate to="/app" replace />} />
+            <Route path="/" element={<Landing />} />
             <Route path="/app" element={<AppHome />} />
             <Route path="/app/practice" element={<PracticeHub />} />
             <Route path="/app/practice/run" element={<PracticeRun />} />
@@ -41,7 +41,7 @@ const App = () => (
             <Route path="/app/check/result" element={<CheckResult />} />
             <Route path="/app/me" element={<MePage />} />
             <Route path="/app/login" element={<LoginPage />} />
-            <Route path="/legacy" element={<Index />} />
+            <Route path="/legacy" element={<Navigate to="/" replace />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
